@@ -84,8 +84,6 @@ jobs:
       - name: commit and push
         if: env.should_build == 'true'
         run: |          
-          git add libwebrtc.aar
-          git commit -m "Update for release ${{ env.next_release_name }}"          
           git tag "${{ env.next_release_tag }}"
           
           remote_repo="https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git"
@@ -95,7 +93,7 @@ jobs:
       - name: Create prerelease
         if: env.should_build == 'true'
         run: |
-          echo "Release notes: N/A\nWebRTC Branch: [branch-heads/${{ env.next_release_branch }}](https://chromium.googlesource.com/external/webrtc/+log/branch-heads/${{ env.next_release_branch }})" >> changelog.md
+          echo "Release notes: N/A\\nWebRTC Branch: [branch-heads/${{ env.next_release_branch }}](https://chromium.googlesource.com/external/webrtc/+log/branch-heads/${{ env.next_release_branch }})" >> changelog.md
           gh release create "${{ env.next_release_tag }}" -d -t "M${{ env.next_release_milestone }}"  -F changelog.md "libwebrtc.aar"
 
       - name: Open PR
