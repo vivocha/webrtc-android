@@ -17,10 +17,12 @@ checkout_webrtc() {
     local branch=$1
     if [ ! -d src ]; then
         echo "${C_GREEN}${C_GREY0}Fetching WebRTC...${NO_FORMAT}"
-	    fetch --nohooks webrtc_ios
+	    fetch --nohooks webrtc_android
     fi
 
     cd src
+    echo "${C_GREEN}${C_GREY0}Building deps${NO_FORMAT}"
+    ./build/install-build-deps.sh
     echo "${C_GREEN}${C_GREY0}Checkout${NO_FORMAT} ${C_AQUA}${C_GREY0}${branch}${NO_FORMAT}"
     git checkout ${branch}
     cd ..
