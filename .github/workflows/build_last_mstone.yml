@@ -58,8 +58,6 @@ jobs:
 
           git push "${remote_repo}" "M${{ env.next_release_milestone }}" --force --follow-tags --tags
 
-          mkdir "${{ env.output_dir }}"
-
       - name: Checkout WebRTC
         if: env.should_build == 'true'
         run: | 
