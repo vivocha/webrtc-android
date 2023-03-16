@@ -100,6 +100,6 @@ jobs:
           echo "Release notes: N/A\nWebRTC Branch: [branch-heads/${{ env.next_release_branch }}](https://chromium.googlesource.com/external/webrtc/+log/branch-heads/${{ env.next_release_branch }})" >> changelog.md
           gh release create "${{ env.next_release_tag }}" -d -t "M${{ env.next_release_milestone }}"  -F changelog.md "libwebrtc.aar"
 
-      - name: Open PR
-        if: env.should_build == 'true'
-        run: gh pr create -f --head "M${{ env.next_release_milestone }}"
+#       - name: Open PR
+#         if: env.should_build == 'true'
+#         run: gh pr create -f --head "M${{ env.next_release_milestone }}"
