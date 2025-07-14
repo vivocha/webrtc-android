@@ -22,7 +22,14 @@ jobs:
         milestone: [137]
 
     steps:
-      - name: Maximize build space
+      - name: Maximize build disk space (1)
+        uses: easimon/maximize-build-space@master
+        with:
+          root-reserve-mb: 512
+          swap-size-mb: 1024
+          remove-dotnet: 'true'
+            
+      - name: Maximize build space (2)
         run: |
           sudo rm -rf /usr/share/dotnet
           sudo rm -rf /opt/ghc
